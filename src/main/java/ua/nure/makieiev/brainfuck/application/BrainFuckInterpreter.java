@@ -3,8 +3,8 @@ package ua.nure.makieiev.brainfuck.application;
 import ua.nure.makieiev.brainfuck.command.Command;
 import ua.nure.makieiev.brainfuck.strategy.SymbolStrategyContainer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -20,7 +20,7 @@ public class BrainFuckInterpreter {
 
     public List<Command> interpret(String inputData) {
         Stack<List<Command>> commandStack = new Stack<>();
-        commandStack.push(new ArrayList<>());
+        commandStack.push(new LinkedList<>());
         String[] symbols = inputData.split(EMPTY);
         Arrays.stream(symbols).forEach(symbol -> symbolStrategyContainer.getSymbolStrategy(symbol).execute(commandStack));
         return commandStack.peek();
