@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ua.nure.makieiev.brainfuck.exception.NotFoundCommandException;
 
-public class BrainFuckRunnerTest {
+public class BrainFuckInterpreterRunnerTest {
 
     private BrainFuckRunner brainFuckRunner;
 

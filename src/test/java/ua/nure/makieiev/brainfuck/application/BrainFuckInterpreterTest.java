@@ -8,21 +8,21 @@ import ua.nure.makieiev.brainfuck.command.Command;
 
 import java.util.List;
 
-public class BrainFuckTest {
+public class BrainFuckInterpreterTest {
 
-    private BrainFuck brainFuck;
+    private BrainFuckInterpreter brainFuckInterpreter;
 
     @Before
     public void setUp() {
         ApplicationContext applicationContext = new ApplicationContext();
-        brainFuck = new BrainFuck(applicationContext.getSymbolStrategyContainer());
+        brainFuckInterpreter = new BrainFuckInterpreter(applicationContext.getSymbolStrategyContainer());
     }
 
     @Test
     public void shouldReturnTenCommands() {
         int expected = 10;
 
-        List<Command> commands = brainFuck.interpret("++++++++++");
+        List<Command> commands = brainFuckInterpreter.interpret("++++++++++");
 
         int actual = commands.size();
 
@@ -33,7 +33,7 @@ public class BrainFuckTest {
     public void shouldReturnElevenCommands() {
         int expected = 11;
 
-        List<Command> commands = brainFuck.interpret("++++++++++[>+++++++>++++++++++>+++>+<<<<-]");
+        List<Command> commands = brainFuckInterpreter.interpret("++++++++++[>+++++++>++++++++++>+++>+<<<<-]");
 
         int actual = commands.size();
 

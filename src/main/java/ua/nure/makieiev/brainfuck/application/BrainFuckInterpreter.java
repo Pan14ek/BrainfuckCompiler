@@ -10,11 +10,11 @@ import java.util.Stack;
 
 import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.EMPTY;
 
-public class BrainFuck {
+public class BrainFuckInterpreter {
 
     private final SymbolStrategyContainer symbolStrategyContainer;
 
-    public BrainFuck(SymbolStrategyContainer symbolStrategyContainer) {
+    public BrainFuckInterpreter(SymbolStrategyContainer symbolStrategyContainer) {
         this.symbolStrategyContainer = symbolStrategyContainer;
     }
 

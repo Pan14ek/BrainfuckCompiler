@@ -16,8 +16,8 @@ public class BrainFuckRunner {
 
     public void run(String inputData) {
         Memory memory = new Memory();
-        BrainFuck brainFuck = new BrainFuck(applicationContext.getSymbolStrategyContainer());
-        List<Command> commands = brainFuck.interpret(inputData);
+        BrainFuckInterpreter brainFuckInterpreter = new BrainFuckInterpreter(applicationContext.getSymbolStrategyContainer());
+        List<Command> commands = brainFuckInterpreter.interpret(inputData);
         commands.forEach(command -> command.execute(memory));
     }
 
