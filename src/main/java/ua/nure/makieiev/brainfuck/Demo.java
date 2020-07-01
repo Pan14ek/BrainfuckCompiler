@@ -6,7 +6,8 @@ public class Demo {
 
     public static void main(String[] args) {
         BrainFuckRunner brainFuckRunner = new BrainFuckRunner();
-        brainFuckRunner.run("++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.");
+        brainFuckRunner.run("++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+." +
+                "+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.");
     }
 
 }

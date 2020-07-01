@@ -5,9 +5,11 @@ import ua.nure.makieiev.brainfuck.model.Memory;
 
 import java.util.List;
 
+import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.ZERO;
+
 public class LoopCommand implements Command {
 
-    private List<Command> commands;
+    private final List<Command> commands;
 
     public LoopCommand(List<Command> commands) {
         this.commands = commands;
@@ -21,7 +23,7 @@ public class LoopCommand implements Command {
     }
 
     private boolean isNotEmptyCell(Memory memory) {
-        return memory.getMemory()[memory.getPosition()] != 0;
+        return memory.getMemory()[memory.getPosition()] != ZERO;
     }
 
 }
