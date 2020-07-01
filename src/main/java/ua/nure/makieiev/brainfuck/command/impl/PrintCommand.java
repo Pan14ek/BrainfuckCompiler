@@ -7,7 +7,7 @@ public class PrintCommand implements Command {
 
     @Override
     public void execute(Memory memory) {
-        System.out.println((char) memory.getMemory()[memory.getPosition()]);
+        System.out.print((char) memory.getMemory()[memory.getPosition()]);
     }
 
 }

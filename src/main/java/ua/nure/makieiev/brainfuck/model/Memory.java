@@ -8,7 +8,7 @@ import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.START_P
 
 public class Memory {
 
-    private byte[] memory = new byte[MAX_LENGTH];
+    private final byte[] memory = new byte[MAX_LENGTH];
     private int position = START_POSITION;
 
     public byte[] getMemory() {

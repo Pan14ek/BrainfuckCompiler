@@ -14,5 +14,7 @@ public class BrainFuckConstant {
     public static final String MINUS_DATA_IN_CURRENT_CELL = "-";
     public static final String PRINT_INFORMATION = ".";
     public static final String EMPTY = "";
+    public static final String START_LOOP = "[";
+    public static final String END_LOOP = "]";
 
 }
