@@ -26,7 +26,7 @@ public class BrainFuckVisitorImpl implements BrainFuckVisitor {
 
     public BrainFuckVisitorImpl() {
         commands = new Stack<>();
-        commands.push(new LinkedList<>());
+        addNewList();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BrainFuckVisitorImpl implements BrainFuckVisitor {
 
     @Override
     public void visit(StartLoopSymbol startLoopSymbol) {
-        commands.push(new LinkedList<>());
+        addNewList();
     }
 
     @Override
@@ -68,6 +68,10 @@ public class BrainFuckVisitorImpl implements BrainFuckVisitor {
     @Override
     public List<Command> getCommands() {
         return commands.pop();
+    }
+
+    private void addNewList() {
+        commands.push(new LinkedList<>());
     }
 
 }
