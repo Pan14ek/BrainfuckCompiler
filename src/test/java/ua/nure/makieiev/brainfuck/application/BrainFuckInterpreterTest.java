@@ -15,7 +15,7 @@ public class BrainFuckInterpreterTest {
     @Before
     public void setUp() {
         ApplicationContext applicationContext = new ApplicationContext();
-        brainFuckInterpreter = new BrainFuckInterpreter(applicationContext.getSymbolStrategyContainer());
+        brainFuckInterpreter = new BrainFuckInterpreter(applicationContext.getSymbolContainer(), applicationContext.getBrainFuckVisitor());
     }
 
     @Test

@@ -1,14 +1,15 @@
 package ua.nure.makieiev.brainfuck.application.context;
 
-import ua.nure.makieiev.brainfuck.command.CommandContainer;
-import ua.nure.makieiev.brainfuck.command.impl.MinusCommand;
-import ua.nure.makieiev.brainfuck.command.impl.NextCellCommand;
-import ua.nure.makieiev.brainfuck.command.impl.PlusCommand;
-import ua.nure.makieiev.brainfuck.command.impl.PreviousCellCommand;
-import ua.nure.makieiev.brainfuck.command.impl.PrintCommand;
-import ua.nure.makieiev.brainfuck.strategy.SymbolStrategyContainer;
-import ua.nure.makieiev.brainfuck.strategy.impl.EndLoopSymbolStrategy;
-import ua.nure.makieiev.brainfuck.strategy.impl.StartLoopSymbolStrategy;
+import ua.nure.makieiev.brainfuck.symbol.SymbolContainer;
+import ua.nure.makieiev.brainfuck.symbol.impl.EndLoopSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.MinusSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.NextCellSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.PlusSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.PreviousCellSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.PrintSymbol;
+import ua.nure.makieiev.brainfuck.symbol.impl.StartLoopSymbol;
+import ua.nure.makieiev.brainfuck.visitor.BrainFuckVisitor;
+import ua.nure.makieiev.brainfuck.visitor.impl.BrainFuckVisitorImpl;
 
 import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.END_LOOP;
 import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.MINUS_DATA_IN_CURRENT_CELL;
@@ -20,35 +21,35 @@ import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.START_L
 
 public class ApplicationContext {
 
-    private CommandContainer commandContainer;
-    private SymbolStrategyContainer symbolStrategyContainer;
+    private SymbolContainer symbolContainer;
+    private BrainFuckVisitor brainFuckVisitor;
 
     public ApplicationContext() {
         init();
     }
 
     private void init() {
-        commandContainer = new CommandContainer();
-        symbolStrategyContainer = new SymbolStrategyContainer(commandContainer);
-        addCommands();
-        addSymbolStrategies();
+        symbolContainer = new SymbolContainer();
+        brainFuckVisitor = new BrainFuckVisitorImpl();
+        addSymbolContainer();
     }
 
-    private void addCommands() {
-        commandContainer.add(NEXT_CELL, new NextCellCommand());
-        commandContainer.add(PREVIOUS_CELL, new PreviousCellCommand());
-        commandContainer.add(PLUS_DATA_IN_CURRENT_CELL, new PlusCommand());
-        commandContainer.add(MINUS_DATA_IN_CURRENT_CELL, new MinusCommand());
-        commandContainer.add(PRINT_INFORMATION, new PrintCommand());
+    private void addSymbolContainer() {
+        symbolContainer.add(NEXT_CELL, new NextCellSymbol());
+        symbolContainer.add(PREVIOUS_CELL, new PreviousCellSymbol());
+        symbolContainer.add(PLUS_DATA_IN_CURRENT_CELL, new PlusSymbol());
+        symbolContainer.add(MINUS_DATA_IN_CURRENT_CELL, new MinusSymbol());
+        symbolContainer.add(PRINT_INFORMATION, new PrintSymbol());
+        symbolContainer.add(START_LOOP, new StartLoopSymbol());
+        symbolContainer.add(END_LOOP, new EndLoopSymbol());
     }
 
-    private void addSymbolStrategies() {
-        symbolStrategyContainer.add(START_LOOP, new StartLoopSymbolStrategy());
-        symbolStrategyContainer.add(END_LOOP, new EndLoopSymbolStrategy());
+    public SymbolContainer getSymbolContainer() {
+        return symbolContainer;
     }
 
-    public SymbolStrategyContainer getSymbolStrategyContainer() {
-        return symbolStrategyContainer;
+    public BrainFuckVisitor getBrainFuckVisitor() {
+        return brainFuckVisitor;
     }
 
 }

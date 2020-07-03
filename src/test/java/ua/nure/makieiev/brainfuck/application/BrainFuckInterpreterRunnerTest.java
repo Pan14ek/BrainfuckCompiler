@@ -2,7 +2,7 @@ package ua.nure.makieiev.brainfuck.application;
 
 import org.junit.Before;
 import org.junit.Test;
-import ua.nure.makieiev.brainfuck.exception.NotFoundCommandException;
+import ua.nure.makieiev.brainfuck.exception.NotFoundSymbolException;
 
 public class BrainFuckInterpreterRunnerTest {
 
@@ -52,7 +52,7 @@ public class BrainFuckInterpreterRunnerTest {
 
     }
 
-    @Test(expected = NotFoundCommandException.class)
+    @Test(expected = NotFoundSymbolException.class)
     public void shouldThrowExceptionWhenWriteWrongSymbol() {
 
         brainFuckRunner.run("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>." +
