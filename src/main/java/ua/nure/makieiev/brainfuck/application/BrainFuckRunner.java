@@ -10,7 +10,7 @@ import ua.nure.makieiev.brainfuck.model.Memory;
 public class BrainFuckRunner {
 
     /**
-     * This method runs BrainFuck compiler
+     * This method runs BrainFuck application
      *
      * @param inputData is string with BrainFuck expressions
      */
