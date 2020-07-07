@@ -1,24 +1,26 @@
 package ua.nure.makieiev.brainfuck.application;
 
-import ua.nure.makieiev.brainfuck.application.context.ApplicationContext;
-import ua.nure.makieiev.brainfuck.command.Command;
+import ua.nure.makieiev.brainfuck.factory.CommandFactory;
+import ua.nure.makieiev.brainfuck.factory.SymbolStrategyFactory;
 import ua.nure.makieiev.brainfuck.model.Memory;
 
-import java.util.List;
-
+/**
+ * This class is responsible for starting BrainFuck compiler.
+ */
 public class BrainFuckRunner {
 
-    private final ApplicationContext applicationContext;
-
-    public BrainFuckRunner() {
-        applicationContext = new ApplicationContext();
-    }
-
+    /**
+     * This method runs BrainFuck compiler
+     *
+     * @param inputData is string with BrainFuck expressions
+     */
     public void run(String inputData) {
         Memory memory = new Memory();
-        BrainFuckInterpreter brainFuckInterpreter = new BrainFuckInterpreter(applicationContext.getSymbolStrategyContainer());
-        List<Command> commands = brainFuckInterpreter.interpret(inputData);
-        commands.forEach(command -> command.execute(memory));
+        CommandFactory commandFactory = new CommandFactory();
+        SymbolStrategyFactory symbolStrategyFactory = new SymbolStrategyFactory(commandFactory);
+        BrainFuckParser brainFuckParser = new BrainFuckParser(symbolStrategyFactory);
+        BrainFuckExecutor brainFuckExecutor = new BrainFuckExecutor(memory);
+        brainFuckExecutor.execute(brainFuckParser.parse(inputData));
     }
 
 }
