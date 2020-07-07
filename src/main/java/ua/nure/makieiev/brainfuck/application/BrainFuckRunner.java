@@ -5,7 +5,7 @@ import ua.nure.makieiev.brainfuck.factory.SymbolStrategyFactory;
 import ua.nure.makieiev.brainfuck.model.Memory;
 
 /**
- * This class is responsible for starting BrainFuck compiler.
+ * This class is responsible for starting BrainFuck application.
  */
 public class BrainFuckRunner {
 
