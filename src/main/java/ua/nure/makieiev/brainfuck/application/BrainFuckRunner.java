@@ -1,7 +1,6 @@
 package ua.nure.makieiev.brainfuck.application;
 
 import ua.nure.makieiev.brainfuck.factory.CommandFactory;
-import ua.nure.makieiev.brainfuck.factory.SymbolStrategyFactory;
 import ua.nure.makieiev.brainfuck.model.Memory;
 
 /**
@@ -17,8 +16,7 @@ public class BrainFuckRunner {
     public void run(String inputData) {
         Memory memory = new Memory();
         CommandFactory commandFactory = new CommandFactory();
-        SymbolStrategyFactory symbolStrategyFactory = new SymbolStrategyFactory(commandFactory);
-        BrainFuckParser brainFuckParser = new BrainFuckParser(symbolStrategyFactory);
+        BrainFuckParser brainFuckParser = new BrainFuckParser(commandFactory);
         BrainFuckExecutor brainFuckExecutor = new BrainFuckExecutor(memory);
         brainFuckExecutor.execute(brainFuckParser.parse(inputData));
     }

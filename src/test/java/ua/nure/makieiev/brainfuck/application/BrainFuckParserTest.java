@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import ua.nure.makieiev.brainfuck.command.Command;
 import ua.nure.makieiev.brainfuck.factory.CommandFactory;
-import ua.nure.makieiev.brainfuck.factory.SymbolStrategyFactory;
 
 import java.util.List;
 
@@ -16,8 +15,7 @@ public class BrainFuckParserTest {
     @Before
     public void setUp() {
         CommandFactory commandFactory = new CommandFactory();
-        SymbolStrategyFactory symbolStrategyFactory = new SymbolStrategyFactory(commandFactory);
-        brainFuckParser = new BrainFuckParser(symbolStrategyFactory);
+        brainFuckParser = new BrainFuckParser(commandFactory);
     }
 
     @Test
