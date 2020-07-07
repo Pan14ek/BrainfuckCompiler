@@ -7,18 +7,28 @@ import java.util.List;
 
 import static ua.nure.makieiev.brainfuck.util.constant.BrainFuckConstant.ZERO;
 
+/**
+ * The command is responsible for loop operation.
+ * The command uses inner commands for to cycle through cells
+ */
 public class LoopCommand implements Command {
 
-    private final List<Command> commands;
+    private final List<Command> innerCommands;
 
-    public LoopCommand(List<Command> commands) {
-        this.commands = commands;
+    public LoopCommand(List<Command> innerCommands) {
+        this.innerCommands = innerCommands;
     }
 
+    /**
+     * This method goes through the inner commands and performs certain actions on the memory.
+     * But before execution, the cell is checked for emptiness.
+     *
+     * @param memory is an object with an array on which certain actions are performed in specific commands
+     */
     @Override
     public void execute(Memory memory) {
         while (isNotEmptyCell(memory)) {
-            commands.forEach(command -> command.execute(memory));
+            innerCommands.forEach(command -> command.execute(memory));
         }
     }
 

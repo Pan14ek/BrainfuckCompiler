@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ua.nure.makieiev.brainfuck.exception.NotFoundSymbolException;
 
-public class BrainFuckInterpreterRunnerTest {
+public class BrainFuckParserRunnerTest {
 
     private BrainFuckRunner brainFuckRunner;
 
